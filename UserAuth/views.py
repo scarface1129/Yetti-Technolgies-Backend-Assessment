@@ -3,13 +3,14 @@ from django.contrib.auth import authenticate, login,logout
 from .forms import UserLogin, UserSignUp 
 from django.http import HttpResponseRedirect
 from django.views.generic import  View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
 # Create your views here.
 
 
-class HomeView(View):
+class HomeView(LoginRequiredMixin,View):
     template_name = "UserAuth/home.html"
     context = {}
     def get(self, request):
