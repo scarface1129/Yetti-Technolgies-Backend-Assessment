@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Coding by CodingNepal | www.codingnepalweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+
+   </head>
+<body>
+    <div class="main-header--two__top-right clearfix">
+        {% if user.is_authenticated %}
+            <div class="main-header--two__top-right-login-register">
+                <h1>Hello World</h1>
+                <ul class="list-unstyled">
+                    <ol><h2> Welcome {{ user.email }}</h2></ol>
+                    <ol><a style='color:white;' href="{% url 'logout' %}">Logout</a></ol> 
+                </ul>
+            </div>
+        {% else%}
+            <div class="main-header--two__top-right-login-register">
+                <ul class="list-unstyled">
+                    <ol><a style='color:white;' href="{% url 'login' %}">Login</a></ol>
+                    <ol><a style='color:white;' href="{% url 'register' %}">Register</a></ol>
+                </ul>
+            </div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
